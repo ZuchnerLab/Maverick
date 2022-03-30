@@ -7,4 +7,7 @@ This repository additionally contains python notebooks in the "Notebooks" direct
 
 The manuscript associated with Maverick is currently in submission for publication. This page will be updated with citation information when available. 
 
-We are currently generating Maverick scores for all possible missense and nonsense SNVs in the Gencode Basic V33 annotation of GRCh37. Links to those scores will be posted here once they are available. 
+We have pre-computed Maverick scores for all possible autosomal missense and nonsense SNVs in the Gencode Basic V33 annotation of GRCh37. Those scores can be downloaded here: https://zuchnerlab.s3.amazonaws.com/VariantPathogenicity/MaverickResults_allSNVs_GRCh37.txt.gz. If you want the scores produced by each of the eight models instead of just the final ensemble score, you can download this much larger file: https://zuchnerlab.s3.amazonaws.com/VariantPathogenicity/MaverickResults_allSNVs_GRCh37_withIndividualModelScores.txt.gz. 
+
+Versions of each of those files lifted over to GRCh38 are available as well. The version with only the final Maverick score is available here: https://zuchnerlab.s3.amazonaws.com/VariantPathogenicity/MaverickResults_allSNVs_GRCh38LiftOver.txt.gz
+And the version that additionally contains the individual model scores is available here: https://zuchnerlab.s3.amazonaws.com/VariantPathogenicity/MaverickResults_allSNVs_GRCh38LiftOver_withIndividualModelScores.txt.gz
