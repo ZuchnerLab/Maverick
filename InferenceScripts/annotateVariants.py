@@ -26,7 +26,7 @@ def main ( argv ):
 	sample['hg19_chr']=sample['hg19_chr'].astype(int)
 
 	# merge on the allele frequency data
-	gnomadAF=pandas.read_csv('gnomad211_exomes_AFs.txt',sep='\t',low_memory=False,dtype={'hg19_chr':str,'hg19_pos(1-based)':np.int16,'ref':str,'alt':str,'AF':np.float16,'nhomalt':np.int16,'controls_AF':np.float16,'controls_nhomalt':np.int16})
+	gnomadAF=pandas.read_csv('gnomad211_exomes_AFs.txt',sep='\t',low_memory=False,dtype={'hg19_chr':str,'hg19_pos(1-based)':np.int32,'ref':str,'alt':str,'AF':np.float32,'nhomalt':np.int32,'controls_AF':np.float32,'controls_nhomalt':np.int32})
 	gnomadAF.loc[gnomadAF['hg19_chr']=='X','hg19_chr']=23
 	gnomadAF.loc[gnomadAF['hg19_chr']=='Y','hg19_chr']=24
 	gnomadAF.loc[gnomadAF['hg19_chr']=='MT','hg19_chr']=25
@@ -50,7 +50,7 @@ def main ( argv ):
 
 	# merge on the CCR data
 	sample2['CCR']=np.nan
-	CCR=pandas.read_csv('ccrs.enumerated.txt',sep='\t',low_memory=False,dtype={'chrom':str,'pos':np.int16,'ccr_pct':np.float16})
+	CCR=pandas.read_csv('ccrs.enumerated.txt',sep='\t',low_memory=False,dtype={'chrom':str,'pos':np.int32,'ccr_pct':np.float32})
 	CCR.loc[CCR['chrom']=='X','chrom']=23
 	CCR['chrom']=CCR.loc[:,'chrom'].astype(int)
 	CCR=CCR.sort_values(by=['chrom','pos','ccr_pct'],ascending=[True,True,False]).drop_duplicates(subset=['chrom','pos'],keep='first').reset_index(drop=True)
@@ -70,7 +70,7 @@ def main ( argv ):
 	sample2.loc[sampleIndels.index,'CCR']=sampleIndels.loc[:,'CCR'].values
 
 	# merge on the pext data
-	pext=pandas.read_csv('gnomAD_pext_values.txt',sep='\t',low_memory=False,dtype={'chr':str,'pos':np.int16,'pext':np.float16})
+	pext=pandas.read_csv('gnomAD_pext_values.txt',sep='\t',low_memory=False,dtype={'chr':str,'pos':np.int32,'pext':np.float32})
 	pext.loc[pext['chr']=='X','chr']=23
 	pext.loc[pext['chr']=='Y','chr']=24
 	pext.loc[pext['chr']=='MT','chr']=25
@@ -90,7 +90,7 @@ def main ( argv ):
 	sample2.loc[sampleIndels.index,'pext']=sampleIndels.loc[:,'pext'].values
 
 	# merge on the GERP data
-	gerp=pandas.read_csv('gerpOnExons.txt',sep='\t',low_memory=False,header=None,names=['chr','pos','gerp'],dtype={'chr':str,'pos':np.int16,'gerp':np.float16})
+	gerp=pandas.read_csv('gerpOnExons.txt',sep='\t',low_memory=False,header=None,names=['chr','pos','gerp'],dtype={'chr':str,'pos':np.int32,'gerp':np.float32})
 	gerp.loc[gerp['chr']=='X','chr']=23
 	gerp.loc[gerp['chr']=='Y','chr']=24
 	gerp.loc[gerp['chr']=='MT','chr']=25

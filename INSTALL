@@ -1,0 +1,38 @@
+### Step 1: Setup a conda environment for installing Maverick's dependencies
+# Step 1.1: If you do not already have Miniconda or Anaconda installed on your system, install them, otherwise skip to step 1.2
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+chmod 700 Miniconda3-latest-Linux-x86_64.sh
+./Miniconda3-latest-Linux-x86_64.sh
+# install in default location, agree to license terms
+
+exec bash # restart your shell
+
+# Step 1.2: create the Maverick conda environment
+conda create -y -n maverick python=3.7
+conda activate maverick
+
+### Step 2: Install Maverick dependencies
+# You may need to install/update gcc-c++ for the following steps to work. E.g., "sudo yum install gcc-c++" in CentOS/RHEL or "sudo apt install g++" in Ubuntu
+# Step 2.1: GPU-specific installation steps (skip to step 2.2 if you do not have a GPU in your system)
+conda install -y -c conda-forge cudatoolkit=11.2 cudnn=8.1.0
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/
+# please note that on some systems, setting the LD_LIBRARY_PATH this way causes problems and you may need to run 'unset LD_LIBRARY_PATH' to use normal bash utilities again
+
+# Step 2.2: Install dependencies
+pip install pandas matplotlib scikit-learn scipy biopython tensorflow transformers tf-models-official==2.7
+pip install numpy --upgrade
+conda install -y dos2unix git
+
+### Step 3: Download the Maverick annotation files and model weights
+wget https://zuchnerlab.s3.amazonaws.com/VariantPathogenicity/Maverick_resources.tar.gz
+tar -zxvf Maverick_resources.tar.gz
+rm Maverick_resources.tar.gz
+
+
+### Step 4: Clone the Maverick repository
+git clone https://github.com/ZuchnerLab/Maverick.git
+
+### Step 5: (Optional) Run the demo/example
+chmod 700 Maverick/InferenceScripts/scoreVariants.sh
+Maverick/InferenceScripts/scoreVariants.sh example.vcf
+# the example VCF is contained in the Maverick_resources tar archive. Running this demo should take 10-15 minutes, depending on your system. Most of that time is spent in annotation. 

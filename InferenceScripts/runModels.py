@@ -555,7 +555,7 @@ def main ( argv ):
         print('runModels.py --inputBase <baseName>')
         sys.exit(2)
     for opt, arg in opts:
-        if opt in ('--input'):
+        if opt in ('--inputBase'):
             inBase=arg
         elif opt in ('-h','--help'):
             print('runModels.py --inputBase <baseName>')

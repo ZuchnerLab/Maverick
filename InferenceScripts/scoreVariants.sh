@@ -32,4 +32,6 @@ python Maverick/InferenceScripts/annotateVariants.py --inputBase=${BASE}
 echo "Starting Step 4: Score variants with the 8 models"
 python Maverick/InferenceScripts/runModels.py --inputBase=${BASE}
 
+python Maverick/InferenceScripts/rankVariants.py --inputBase=${BASE}
+
 echo "Done"
