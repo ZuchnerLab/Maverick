@@ -36,3 +36,4 @@ git clone https://github.com/ZuchnerLab/Maverick.git
 chmod 700 Maverick/InferenceScripts/scoreVariants.sh
 Maverick/InferenceScripts/scoreVariants.sh example.vcf
 # the example VCF is contained in the Maverick_resources tar archive. Running this demo should take 10-15 minutes, depending on your system. Most of that time is spent in annotation. 
+# You can alternatively work with VCF files aligned to GRCh38 by running the "scoreVariants_GRCh38.sh" script. 
