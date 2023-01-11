@@ -29,9 +29,9 @@ We have pre-computed Maverick scores for all possible autosomal missense and non
 ## Basic Usage
 
 After following the steps in the INSTALL file, Maverick can be run as follows:
-'''
+```
 Maverick/InferenceScripts/runMaverick.sh Maverick/example/example.vcf
-'''
+```
 
 ## Output
 
