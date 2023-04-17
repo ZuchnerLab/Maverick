@@ -5,24 +5,24 @@ def main ( argv ):
 	try:
 		opts, args = getopt.getopt(argv,"h",["inputBase=","help"])
 	except getopt.GetoptError:
-		print('rankVariants.py --inputBase <baseName>')
+		print('rankVariantsLite_GRCh38.py --inputBase <baseName>')
 		sys.exit(2)
 	for opt, arg in opts:
 		if opt in ('--inputBase'):
 			base=arg
 		elif opt in ('-h','--help'):
-			print('rankVariants.py --inputBase <baseName>')
+			print('rankVariantsLite_GRCh38.py --inputBase <baseName>')
 			sys.exit()
 		else:
-			print('rankVariants.py --inputBase <baseName>')
+			print('rankVariantsLite_GRCh38.py --inputBase <baseName>')
 			sys.exit()
 
 	import pandas
 	import numpy as np
 	import scipy
 	from scipy import stats
-	sample=pandas.read_csv(base + '.MaverickResults.txt',sep='\t',low_memory=False)
-	sample['varID']=sample.loc[:,['hg19_chr','hg19_pos(1-based)','ref','alt']].apply(lambda row: '_'.join(row.values.astype(str)),axis=1)
+	sample=pandas.read_csv(base + '.MaverickLiteResults.txt',sep='\t',low_memory=False)
+	sample['varID']=sample.loc[:,['hg38_chr','hg38_pos(1-based)','ref','alt']].apply(lambda row: '_'.join(row.values.astype(str)),axis=1)
 	sample['TotalScore']=sample.loc[:,'Maverick_DomScore']
 	sample.loc[sample['genotype']=='hom','TotalScore']=sample.loc[sample['genotype']=='hom','Maverick_RecScore']
 	compHetPairs=pandas.DataFrame(columns=['site1_varID','site2_varID','geneID','geneName','site1_RecScore','site2_RecScore','TotalScore'])
@@ -44,8 +44,8 @@ def main ( argv ):
 	thisSampleFinalScores=pandas.concat([sample,compHetPairs],axis=0,sort=False,ignore_index=True)
 	thisSampleFinalScores=thisSampleFinalScores.sort_values(by="TotalScore",ascending=False)
 	# tidy up
-	thisSampleFinalScores=thisSampleFinalScores.loc[:,['varType','hg19_chr','hg19_pos(1-based)','ref','alt','genotype','geneName','geneID','Maverick_BenignScore','Maverick_DomScore','Maverick_RecScore','varID','site1_varID','site2_varID','site1_RecScore','site2_RecScore','TotalScore']]
-	thisSampleFinalScores.to_csv(base + '.finalScores.txt',sep='\t',header=True,index=False)
+	thisSampleFinalScores=thisSampleFinalScores.loc[:,['varType','hg38_chr','hg38_pos(1-based)','ref','alt','genotype','geneName','geneID','Maverick_BenignScore','Maverick_DomScore','Maverick_RecScore','varID','site1_varID','site2_varID','site1_RecScore','site2_RecScore','TotalScore']]
+	thisSampleFinalScores.to_csv(base + '.finalScoresLite.txt',sep='\t',header=True,index=False)
 	return
 
 

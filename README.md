@@ -26,11 +26,23 @@ We have pre-computed Maverick scores for all possible autosomal missense and non
 
 [Lifted over to GRCh38 with scores from individual sub-models](https://zuchnerlab.s3.amazonaws.com/VariantPathogenicity/MaverickResults_allSNVs_GRCh38LiftOver_withIndividualModelScores.txt.gz)
 
+The data used in the manuscript to train and evaluate are also available for download:
+[Training Set](https://zuchnerlab.s3.amazonaws.com/VariantPathogenicity/Maverick_trainingSet.txt.gz)
+[Validation Set](https://zuchnerlab.s3.amazonaws.com/VariantPathogenicity/Maverick_validationSet.txt.gz)
+[Known Genes Test Set](https://zuchnerlab.s3.amazonaws.com/VariantPathogenicity/Maverick_knownGenesSet.txt.gz)
+[Novel Genes Test Set](https://zuchnerlab.s3.amazonaws.com/VariantPathogenicity/Maverick_novelGenesSet.txt.gz)
+
+
 ## Basic Usage
 
 After following the steps in the INSTALL file, Maverick can be run as follows:
 ```
 Maverick/InferenceScripts/runMaverick.sh Maverick/example/example.vcf
+```
+
+A lite version of Maverick is also available which only runs Architecture 1 Model 1 and has much more forgiving hardware requirements at the cost of a small impact to accuracy:
+```
+Maverick/InferenceScripts/runMaverickLite.sh Maverick/example/example.vcf
 ```
 
 ## Output

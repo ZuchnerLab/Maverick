@@ -5,16 +5,16 @@ def main ( argv ):
 	try:
 		opts, args = getopt.getopt(argv,"h",["inputBase=","help"])
 	except getopt.GetoptError:
-		print('rankScores.py --inputBase <baseName>')
+		print('rankVariants_GRCh38.py --inputBase <baseName>')
 		sys.exit(2)
 	for opt, arg in opts:
 		if opt in ('--inputBase'):
 			base=arg
 		elif opt in ('-h','--help'):
-			print('rankScores.py --inputBase <baseName>')
+			print('rankVariants_GRCh38.py --inputBase <baseName>')
 			sys.exit()
 		else:
-			print('rankScores.py --inputBase <baseName>')
+			print('rankVariants_GRCh38.py --inputBase <baseName>')
 			sys.exit()
 
 	import pandas
