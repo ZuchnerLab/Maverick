@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/468339108.svg)](https://zenodo.org/badge/latestdoi/468339108)
 ## Maverick: Mendelian variant pathogenicity prediction
 
 Maverick is a Mendelian approach to variant effect prediction built in keras. It leverages transformers to process a multi-modal set of inputs in order to predict whether a variant is benign, dominant pathogenic, or recessive pathogenic. 
@@ -28,8 +29,11 @@ We have pre-computed Maverick scores for all possible autosomal missense and non
 
 The data used in the manuscript to train and evaluate are also available for download:
 [Training Set](https://zuchnerlab.s3.amazonaws.com/VariantPathogenicity/Maverick_trainingSet.txt.gz)
+
 [Validation Set](https://zuchnerlab.s3.amazonaws.com/VariantPathogenicity/Maverick_validationSet.txt.gz)
+
 [Known Genes Test Set](https://zuchnerlab.s3.amazonaws.com/VariantPathogenicity/Maverick_knownGenesSet.txt.gz)
+
 [Novel Genes Test Set](https://zuchnerlab.s3.amazonaws.com/VariantPathogenicity/Maverick_novelGenesSet.txt.gz)
 
 
