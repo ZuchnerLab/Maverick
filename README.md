@@ -27,7 +27,7 @@ We have pre-computed Maverick scores for all possible autosomal missense and non
 
 [Lifted over to GRCh38 with scores from individual sub-models](https://zuchnerlab.s3.amazonaws.com/VariantPathogenicity/MaverickResults_allSNVs_GRCh38LiftOver_withIndividualModelScores.txt.gz)
 
-The data used in the manuscript to train and evaluate are also available for download:
+The datasets used in the manuscript to train and evaluate Maverick are also available for download:
 
 [Training Set](https://zuchnerlab.s3.amazonaws.com/VariantPathogenicity/Maverick_trainingSet.txt.gz)
 
