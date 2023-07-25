@@ -28,11 +28,34 @@ wget https://zuchnerlab.s3.amazonaws.com/VariantPathogenicity/Maverick_resources
 tar -zxvf Maverick_resources.tar.gz
 rm Maverick_resources.tar.gz
 
+### Step 4: Setup Annovar
+# Step 4.1: Download Annovar
+# Annovar executables are bound by both academic and commercial licenses, but can be downloaded (after registration) from https://www.openbioinformatics.org/annovar/annovar_download_form.php
+# Users must obtain their own licenses for use of Annovar and then move the release archive to the directory where Maverick is being set up in order to continue. 
 
-### Step 4: Clone the Maverick repository
+# Step 4.2: Extract Annovar to a new annovar/ subdirectory.
+tar -zxvf annovar.tar.gz
+
+# Step 4.3: Configure the Gencode annotations for use with Annovar (GRCh37)
+cd annovar/
+./annotate_variation.pl -downdb -build hg19 seq humandb/hg19_seq/
+./annotate_variation.pl --build hg19 --downdb wgEncodeGencodeBasicV33lift37 humandb/
+./retrieve_seq_from_fasta.pl -format genericGene -seqdir humandb/hg19_seq/ -outfile humandb/hg19_wgEncodeGencodeBasicV33lift37Mrna.fa humandb/hg19_wgEncodeGencodeBasicV33lift37.txt 
+cd ../
+
+# Step 4.4: Configure the Gencode annotations for use with Annovar (GRCh38)
+cd annovar/
+./annotate_variation.pl -downdb -build hg38 seq humandb/hg38_seq/
+# The following line of code may not be necessary with newer versions of Annovar. Use as needed. 
+mv humandb/hg38_seq/chroms/* humandb/hg38_seq/
+./annotate_variation.pl --build hg38 --downdb wgEncodeGencodeBasicV33 humandb/
+./retrieve_seq_from_fasta.pl -format genericGene -seqdir humandb/hg38_seq/ -outfile humandb/hg38_wgEncodeGencodeBasicV33Mrna.fa humandb/hg38_wgEncodeGencodeBasicV33.txt 
+cd ../
+
+### Step 5: Clone the Maverick repository
 git clone https://github.com/ZuchnerLab/Maverick.git
 
-### Step 5: (Optional) Run the demo/example
+### Step 6: (Optional) Run the demo/example
 chmod 700 Maverick/InferenceScripts/runMaverick.sh
 Maverick/InferenceScripts/runMaverick.sh Maverick/example/example.vcf
 # Running this demo should take 10-15 minutes, depending on your system. Most of that time is spent in annotation. 
