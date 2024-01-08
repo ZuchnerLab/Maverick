@@ -23,7 +23,6 @@ def main ( argv ):
 	sample.loc[sample['hg38_chr']=='X','hg38_chr']=23
 	sample.loc[sample['hg38_chr']=='Y','hg38_chr']=24
 	sample.loc[sample['hg38_chr']=='MT','hg38_chr']=25
-	sample.loc[(~(sample['hg38_chr'].str.contains('_'))),:].reset_index(drop=True)
 	sample['hg38_chr']=sample['hg38_chr'].astype(int)
 
 	# merge on the allele frequency data
