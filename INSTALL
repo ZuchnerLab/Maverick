@@ -24,7 +24,7 @@ pip install numpy --upgrade
 conda install -y dos2unix git
 
 ### Step 3: Download the Maverick annotation files and model weights
-wget https://zuchnerlab.s3.amazonaws.com/VariantPathogenicity/Maverick_resources.tar.gz
+wget https://zuchnerlab.s3.amazonaws.com/VariantPathogenicity/MAVERICK/Maverick_resources.tar.gz
 tar -zxvf Maverick_resources.tar.gz
 rm Maverick_resources.tar.gz
 
