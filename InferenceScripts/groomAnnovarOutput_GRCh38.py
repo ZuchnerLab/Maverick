@@ -38,13 +38,9 @@ def main ( argv ):
 		if len(approvedTranscripts.loc[approvedTranscripts['transcriptIDShort']==transcriptID,:])>0:
 			sequences[transcriptID]=record.seq
 
+	# load in the sample data (expect indels to be in 'long form' already)
 	sample=pandas.read_csv(base + ".avinput.exonic_variant_function",sep='\t',low_memory=False,header=None,
 						names=['line','varType','location','hg38_chr','hg38_pos(1-based)','end','ref','alt','genotype','qual','depth'])
-	# convert the position, ref, and alt alleles to long form
-	longForm=pandas.read_csv(base + "_locations.txt",sep='\t',low_memory=False,header=None,names=['chrom','pos_long','ref_long','alt_long'])
-	sample['lineNum']=sample.loc[:,'line'].str[4:].astype(int)-1
-	sample=sample.merge(longForm,how='inner',left_on='lineNum',right_on=longForm.index)
-	sample=sample.loc[:,['line','varType','location','hg38_chr','pos_long','end','ref_long','alt_long','genotype','qual','depth']].rename(columns={'pos_long':'hg38_pos(1-based)','ref_long':'ref','alt_long':'alt'}).reset_index(drop=True)
 	# add new columns with placeholders to be filled in
 	sample['WildtypeSeq']=""
 	sample['AltSeq']=""

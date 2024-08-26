@@ -9,8 +9,7 @@ echo "Starting Step 1: Get coding changes with Annovar"
 dos2unix ${fileName}
 # remove chr prefix if present
 sed -i 's/^chr//' ${fileName}
-grep -v '^#' ${fileName} | cut -f 1,2,4,5 > ${BASE}_locations.txt
-annovar/convert2annovar.pl -format vcf4 ${BASE}.vcf > ${BASE}.avinput
+annovar/convert2annovar.pl -format vcf4 --keepindelref ${BASE}.vcf > ${BASE}.avinput
 annovar/annotate_variation.pl -dbtype wgEncodeGencodeBasicV33 -buildver hg38 --exonicsplicing ${BASE}.avinput annovar/humandb/
 # if there are no scorable variants, end early
 SCORABLEVARIANTS=$(cat ${BASE}.avinput.exonic_variant_function | wc -l || true)

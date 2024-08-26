@@ -357,7 +357,7 @@ class DataGenerator(keras.utils.Sequence):
                 # how many amino acids inserted?
                 refNucLen=0
                 if self.dataFrameIn.loc[ID,'ref']!='-':
-                    altNucLen=len(self.dataFrameIn.loc[ID,'ref'])
+                    refNucLen=len(self.dataFrameIn.loc[ID,'ref'])
                 altNucLen=len(self.dataFrameIn.loc[ID,'alt'])
                 numAAIns=int((altNucLen-refNucLen)/3)
                 if (seqLen+numAAIns)==seqLenAlt:
