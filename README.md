@@ -7,7 +7,7 @@ This repository contains scripts to run inference with Maverick on VCF files ali
 
 This repository additionally contains python notebooks in the "Notebooks" directory demonstrating 1) how the training and testing sets used in the Maverick paper were generated, 2) how Maverick was trained, and 3) how to run score the variants in a VCF file with Maverick. Each of these notebooks are additionally available as Google CoLabs: [Generate Training and Test Sets](https://colab.research.google.com/drive/15FbOCsJ00j894PUBYdeCRDYpLMct8Wvv?usp=sharing), [Train Maverick](https://colab.research.google.com/drive/1bEjmt91epid9u_HqUfq5kor1uFg7OJ1z?usp=sharing), and [Maverick inference](https://colab.research.google.com/drive/1JyifjHLEWQesKzuCpDFZJoXNKJhg-4z8?usp=sharing).
 
-The manuscript associated with Maverick is currently in submission for publication. This page will be updated with citation information when available. The manuscript has been published at: <https://www.nature.com/articles/s41467-023-39306-7>
+Please cite our manuscript when using Maverick in your work. The Maverick manuscript has been published at: <https://www.nature.com/articles/s41467-023-39306-7>
 
 ## License
 
