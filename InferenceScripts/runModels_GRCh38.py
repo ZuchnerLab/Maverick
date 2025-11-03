@@ -593,7 +593,7 @@ def main ( argv ):
     trainingDataNonSeqInfo=np.asarray(trainingDataNonSeqInfo.to_numpy()).astype(np.float32)
 
     # scale columns by QT
-    qt = QuantileTransformer(subsample=1e6, random_state=0, output_distribution='uniform')
+    qt = QuantileTransformer(subsample=int(1e6), random_state=0, output_distribution='uniform')
     qt=qt.fit(trainingDataNonSeqInfo)
     trainingDataNonSeqInfo=qt.transform(trainingDataNonSeqInfo)
 
