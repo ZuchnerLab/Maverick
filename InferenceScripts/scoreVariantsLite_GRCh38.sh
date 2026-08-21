@@ -29,7 +29,7 @@ python Maverick/InferenceScripts/annotateVariants_GRCh38.py --inputBase=${BASE}
 
 # run variants through each of the models
 echo "Starting Step 4: Score variants with architecture 1 model 1 only"
-python Maverick/InferenceScripts/runModelsLite_GRCh38.py --inputBase=${BASE}
+python Maverick/InferenceScripts/runLiteModel_GRCh38.py --inputBase=${BASE}
 
 python Maverick/InferenceScripts/rankVariantsLite_GRCh38.py --inputBase=${BASE}
 
