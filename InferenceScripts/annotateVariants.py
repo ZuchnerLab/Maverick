@@ -12,6 +12,8 @@ def chromToInt ( value ):
 		return 24
 	if value=='MT':
 		return 25
+	if value=='M':
+		return 25
 	return int(value)
 
 
@@ -104,6 +106,7 @@ def main ( argv ):
 	sample.loc[sample['hg19_chr']=='X','hg19_chr']=23
 	sample.loc[sample['hg19_chr']=='Y','hg19_chr']=24
 	sample.loc[sample['hg19_chr']=='MT','hg19_chr']=25
+	sample.loc[sample['hg19_chr']=='M','hg19_chr']=25
 	sample['hg19_chr']=sample['hg19_chr'].astype(int)
 
 	# merge on the allele frequency data. only the rows of the gnomad file that sit on one of
@@ -150,6 +153,7 @@ def main ( argv ):
 	sample2.loc[sample2['hg19_chr']=='X','hg19_chr']=23
 	sample2.loc[sample2['hg19_chr']=='Y','hg19_chr']=24
 	sample2.loc[sample2['hg19_chr']=='MT','hg19_chr']=25
+	sample2.loc[sample2['hg19_chr']=='M','hg19_chr']=25
 	sample2['hg19_chr']=sample2['hg19_chr'].astype(int)
 
 	# SNVs take the value sitting on their own position, while indels take the highest value

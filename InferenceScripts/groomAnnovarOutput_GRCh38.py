@@ -81,7 +81,8 @@ def main ( argv ):
 
 	# load in the sample data (expect indels to be in 'long form' already)
 	sample=pandas.read_csv(base + ".avinput.exonic_variant_function",sep='\t',low_memory=False,header=None,
-						names=['line','varType','location','hg38_chr','hg38_pos(1-based)','end','ref','alt','genotype','qual','depth'])
+						names=['line','varType','location','hg38_chr','hg38_pos(1-based)','end','ref','alt','genotype','qual','depth'],
+						dtype={'hg38_chr':str})
 	# add new columns with placeholders to be filled in
 	sample['WildtypeSeq']=""
 	sample['AltSeq']=""
